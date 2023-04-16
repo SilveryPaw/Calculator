@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <script src="js/script.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="styles/style.css">
+	</head>
+	<body id="body">
+                <div id="calc">
+                        <p id="result">Previous: </p>
+                        <input type="text" class="text" id="example">
+                        <br>
+                        <script>
+                                $(document).ready(function(){
+                                        String.prototype.replaceAll = function(search, replace){
+                                                return this.split(search).join(replace);
+                                        }
+
+                                        function setCursorPosition(element, position){
+                                                element.focus();
+                                                element.setSelectionRange(position + 1, position + 1);
+                                        }
+
+                                        function getChangedText(element, position, insertVal){
+                                                return text = element.val().substring(0, position) + insertVal + element.val().substring(position);
+                                        }
+
+                                        $('.text').on('input', function(){
+                                                let pos = $(this)[0].selectionStart;
+                                                $(this).val($(this).val().replaceAll(/[A-Za-zА-Яа-яЁё =_?&:%;$#№!~`',|\\\/"@]/, ''));
+                                                setCursorPosition($(this)[0], pos - 1);
+                                        });
+                                        $('.insert').click(function(){
+                                                let input = $('.text');
+                                                let pos = input[0].selectionStart;
+                                                input.val(getChangedText(input, pos, $(this).html()));
+                                                setCursorPosition(input[0], pos);
+                                        });
+                                        $('.clear').click(function(){
+                                                $('.text').val("");
+                                                $('.text').focus();
+                                        })
+                                        $('.delete').click(function(){
+                                                $('.text').val($('.text').val().slice(0, -1));
+                                                $('.text').focus();
+                                        })
+                                });
+                        </script>
+                        <div class="buttons">
+                                <button class="insert" id="n1">1</button>
+                                <button class="insert" id="n2">2</button>
+                                <button class="insert" id="n3">3</button>
+                                <button class="insert" id="n4">4</button>
+                                <button class="insert" id="n5">5</button>
+                                <button class="insert" id="n6">6</button>
+                                <button class="insert" id="n7">7</button>
+                                <button class="insert" id="n8">8</button>
+                                <button class="insert" id="n9">9</button>
+                                <button class="insert" id="n0">0</button>
+                                <button class="insert" id="mply">*</button>
+                                <button class="insert" id="share">/</button>
+                                <button class="insert" id="plus">+</button>
+                                <button class="insert" id="minus">-</button>
+                                <button class="insert" id="brackets">()</button>
+                                <button class="insert" id="degree">^</button>
+                                <button class="insert" id="sqrt">&#8730;</button><!-- sqrt -->
+                                <button class="clear" id="clear">C</button>
+                                <button class="insert" id="point">.</button>
+                                <button class="delete" id="delete">&#8592;</button><!-- arrow left -->
+                                <button id="equals" onclick="take_an_example()">=</button>
+                        </div>
+                </div>
+	</body>
+</html>

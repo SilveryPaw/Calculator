@@ -1,0 +1,107 @@
+html{
+    height: 100%;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#calc{
+    width: 200px;
+    height: auto;
+    padding: 25px;
+    border: solid 2px black;
+    border-radius: 10px;
+}
+
+button{
+    font-size: 25px;
+}
+
+#example{
+    width: 100%;
+    height: 50px;
+    font-size: 25px;
+    text-align: right;
+    box-sizing: border-box;
+}
+
+.buttons{
+    display: grid;
+    grid-template-columns: repeat(4, 50px);
+    grid-template-rows: repeat(6, 50px);
+    grid-template-areas:
+    "delete clear sqrt degree"
+    "seven eight nine plus"
+    "four five six minus"
+    "one two three share"
+    "point zero brackets mply"
+    "equals equals equals equals";
+}
+
+#delete{
+    grid-area: delete;
+}
+#clear{
+    grid-area: clear;
+}
+#sqrt{
+    grid-area: sqrt;
+}
+#degree{
+    grid-area: degree;
+}
+#n1{
+    grid-area: one;
+}
+#n2{
+    grid-area: two;
+}
+#n3{
+    grid-area: three;
+}
+#n4{
+    grid-area: four;
+}
+#n5{
+    grid-area: five;
+}
+#n6{
+    grid-area: six;
+}
+#n7{
+    grid-area: seven;
+}
+#n8{
+    grid-area: eight;
+}
+#n9{
+    grid-area: nine;
+}
+#n0{
+    grid-area: zero;
+}
+#plus{
+    grid-area: plus;
+}
+#minus{
+    grid-area: minus;
+}
+#share{
+    grid-area: share;
+}
+#mply{
+    grid-area: mply;
+}
+#point{
+    grid-area: point;
+}
+#brackets{
+    grid-area: brackets;
+}
+#equals{
+    grid-area: equals;
+}
